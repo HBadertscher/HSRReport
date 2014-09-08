@@ -5,7 +5,7 @@
 \marginpar{Goal of this chapter}This chapter is to demonstrate some of the capabilities of this \LaTeX{} template.
 Please take a good look at this chapter and try to follow the guidelines.\\
 
-\marginpar{Equations}Equations\index{Equation} can easily be written using the \emph{equation}
+\marginpar{Equations}\glspl{Equation}\index{Equation} can easily be written using the \emph{\gls{Equation}}
 environment. Inline equations are inserted with $\sqrt{-1} = i $. Equations can
 also be labeled, so it is possible to reference them. This should be done for
 all important equations. 
@@ -95,3 +95,11 @@ are example entries for different types of  in the separate bibliography file
 \cite{article} \cite{book} \cite{booklet} \cite{conference} \cite{inbook}
 \cite{incollection} \cite{manual} \cite{mastersthesis} \cite{misc}
 \cite{phdthesis} \cite{proceedings} \cite{techreport} \cite{unpublished}.
+
+\marginpar{Index \& Glossary}All glossary entries are made in the sepearte file \texttt{glossary.tex}.
+They can then be used with \gls{Equation}.
+Acronyms are defined as shown there and used similarly. 
+The first time, it will be \emph{\gls{svm}}.
+The second time: \emph{\gls{svm}}.
+The glossary has to be created manually by invoking \texttt{makeindex -s doku.ist -t doku.glg -o doku.gls doku.glo}.
+The index is simply created by using \texttt{index\{text\}}. It is generated automatically.
