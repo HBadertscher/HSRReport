@@ -106,11 +106,14 @@
 	\pagestyle{scrheadings}
 	\setheadwidth[0pt]{textwithmarginpar}
 	\setfootwidth[0pt]{head}
+	\renewcommand{\headfont}{\normalfont\sffamily}
+	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
 	
-	\ohead{\Title}
+	\ohead{\leftmark}
 	\chead{}
 	\ihead{\includegraphics[height=30pt]{header/HSR_Logo_A4.jpg}}
-	\ofoot{}
+	\ofoot{\Title}
 	\cfoot{\thepage}
 	\ifoot{\Author}	
 
@@ -149,5 +152,6 @@
 	\renewcommand*{\section}{\FloatBarrier \origsection}
 
 	% Nicer marginpar placement
+	\newcommand*{\oldmarginpar}{}
 	\let\oldmarginpar\marginpar
-	\renewcommand{\marginpar}[1]{\leavevmode\oldmarginpar{{#1}}}
+	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\normalsize#1}}}
