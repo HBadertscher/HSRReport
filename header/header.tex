@@ -32,7 +32,13 @@
 	
 	\usepackage{scrhack}								% fix koma-script incompatibilities
 	\usepackage{mparhack}								% important! needed for nice marginpar placement
-	\usepackage[english,ngerman]{babel}					% Main language: German
+	\newcommand*{\LangDE}{de}
+	\ifx \Lang \LangDE
+		\usepackage[english,ngerman]{babel}					% Main language: German
+	\else
+		\usepackage[ngerman,english]{babel}					% Main language: English
+	\fi
+
 	\usepackage[autostyle,german=quotes]{csquotes}		% Swiss quotes: \enquote{}, \textquote{}, \blockquote{}
 
 	\usepackage{geometry}
