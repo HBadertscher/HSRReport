@@ -1,0 +1,54 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% LaTex Documentation Template
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% "THE BEER-WARE LICENSE" (Revision 42):
+% Hannes Badertscher (hbaderts@hsr.ch) wrote this file. As long as you retain 
+% this notice you can do whatever you want with this stuff. If we meet some day, 
+% and you think this stuff is worth it, you can buy me a beer in return. 
+% - Hannes Badertscher
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% Document information
+\newcommand{\Author}	{Hannes Badertscher} 
+\newcommand{\Title}		{Documentation}
+\newcommand{\Subject}	{Short description of subject}
+\newcommand{\Keywords}	{keyword, even more keywords, and one more}
+\newcommand{\Lang}		{en} 	% document language
+
+% main header file
+\include{header/header}
+
+% % % % % % % % % % % % % %
+\begin{document}
+
+	% Title and toc
+	\pagenumbering{roman}
+	\input{chapters/titlepage}
+	\newpage
+	\newpage
+	\tableofcontents
+	
+	% Main part
+	\cleardoublepage
+	\pagenumbering{arabic} 
+	
+	\input{chapters/bsp_chapter/bsp_chapter}
+
+	% List of figures, tables and bibliography
+	\clearpage
+		\listoffigures
+	\clearpage
+		\listoftables
+	\clearpage
+		\bibliography{bibliograpy}
+		\bibliographystyle{ieeetr}
+
+
+	% Appendix
+	\cleardoublepage
+	\appendix
+
+\end{document}
+% % % % % % % % % % % % % % 
