@@ -11,11 +11,11 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 % Document information
-\newcommand{\Author}	{Hannes Badertscher} 
-\newcommand{\Title}		{Documentation}
-\newcommand{\Subject}	{Short description of subject}
-\newcommand{\Keywords}	{keyword, even more keywords, and one more}
-\newcommand{\Lang}		{en} 	% document language
+\newcommand*{\Author}	{Hannes Badertscher} 
+\newcommand*{\Title}		{Documentation}
+\newcommand*{\Subject}	{Short description of subject}
+\newcommand*{\Keywords}	{keyword, even more keywords, and one more}
+\newcommand*{\Lang}		{en} 	% document language
 
 % main header file
 \include{header/header}
@@ -34,7 +34,7 @@
 	\cleardoublepage
 	\pagenumbering{arabic} 
 	
-	\input{chapters/bsp_chapter/bsp_chapter}
+	\include{chapters/bsp_chapter/bsp_chapter}
 
 	% List of figures, tables and bibliography
 	\clearpage

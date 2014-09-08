@@ -140,7 +140,7 @@
 		
 	% Place FloatBarrier at every section
 	\let\origsection\section							
-	\renewcommand{\section}{\FloatBarrier \origsection}
+	\renewcommand*{\section}{\FloatBarrier \origsection}
 
 	% Nicer marginpar placement
 	\let\oldmarginpar\marginpar
