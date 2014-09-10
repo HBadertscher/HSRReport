@@ -43,8 +43,11 @@
 
 	\usepackage{geometry}
 	\usepackage[komastyle]{scrpage2}		% Custom header and footer
-	\input{header/hsrColors} 				% Color definitions from HSR CI
-													
+		
+	% Colors
+	\usepackage{xcolor}
+	\usepackage{HSRColors}
+												
 	% Math
 	\usepackage{amsmath}
 	\usepackage{amssymb}
@@ -112,14 +115,15 @@
 	\renewcommand{\headfont}{\normalfont\sffamily}
 	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
-	
 	\ohead{\leftmark}
 	\chead{}
-	\ihead{\includegraphics[height=30pt]{header/HSR_Logo_A4.jpg}}
+	\ihead{\includegraphics[width=49.5mm]{header/HSR_Logo_A4.jpg}} % minimum allowed size
 	\ofoot{\Title}
 	\cfoot{\thepage}
 	\ifoot{\Author}	
 
+	\setlength{\headheight}{20.5mm}		% because of logo
+	\setlength{\textheight}{\textheight-20.5mm}
 	\setheadsepline{0.4pt}
 	\setfootsepline{0.4pt}
 
@@ -135,9 +139,9 @@
 		pdfcreator={LaTeX with hyperref and KOMA-Script},
 		colorlinks=true,
 		linkcolor=HSRBlue,
-		citecolor=HSRReed,
-		filecolor=HSRLakeGreen,
-		urlcolor=HSRLakeGreen,
+		citecolor=HSRBlue,
+		filecolor=HSRBlue,
+		urlcolor=HSRBlue,
 		bookmarksnumbered=true
 	]{hyperref}
 	
@@ -157,4 +161,4 @@
 	% Nicer marginpar placement
 	\newcommand*{\oldmarginpar}{}
 	\let\oldmarginpar\marginpar
-	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\normalsize#1}}}
+	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\normalsize\textcolor{HSRBlue}{#1}}}}
