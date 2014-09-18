@@ -124,11 +124,15 @@
 	\cfoot{\thepage}
 	\ifoot{\Author}	
 
+	% Hack for large HSR logo
 	\setlength{\headheight}{20.5mm}		% because of logo
 	\setlength{\textheight}{\textheight-20.5mm}
 	\setheadsepline{0.4pt}
 	\setfootsepline{0.4pt}
-
+	
+	% Show header/footer on index page
+	\indexsetup{firstpagestyle=scrheadings}
+	
 	% PDF information
 	\usepackage[
 		pdftitle={\Title},
