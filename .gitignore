@@ -16,3 +16,5 @@
 *.ist
 *.glo
 *busy*
+*eps-converted-to.pdf*
+doku.pdf

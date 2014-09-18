@@ -39,7 +39,7 @@
 		\usepackage[ngerman,english]{babel}					% Main language: English
 	\fi
 
-	\usepackage[autostyle,german=quotes]{csquotes}		% Swiss quotes: \enquote{}, \textquote{}, \blockquote{}
+	\usepackage{csquotes}		% Swiss quotes: \enquote{}, \textquote{}, \blockquote{}
 
 	\usepackage{geometry}
 	\usepackage[komastyle]{scrpage2}		% Custom header and footer
@@ -82,6 +82,8 @@
 	% Index
 	\usepackage{imakeidx}
 	\makeindex[intoc,columnseprule]
+	
+	\setquotestyle[quotes]{german}
 
 % % % % % % % % % % % % % %
 % Document Setup
@@ -117,7 +119,7 @@
 
 	\ohead{\leftmark}
 	\chead{}
-	\ihead{\includegraphics[width=49.5mm]{header/HSR_Logo_A4.jpg}} % minimum allowed size
+	\ihead{\includegraphics[width=49.5mm]{header/HSR_Logo_CMYK.eps}} % minimum allowed size
 	\ofoot{\Title}
 	\cfoot{\thepage}
 	\ifoot{\Author}	
@@ -154,7 +156,8 @@
 	\numberwithin{figure}{chapter}
 	\numberwithin{table}{chapter}
 		
-	% Place FloatBarrier at every section
+	% Place FloatBarrier before every section
+	\newcommand*{\origsection}{}
 	\let\origsection\section							
 	\renewcommand*{\section}{\FloatBarrier \origsection}
 
