@@ -66,6 +66,7 @@
 	\usepackage{pdfpages}
 	\usepackage{epstopdf}
 	\usepackage{adjustbox}
+	\usepackage{placeins}	% needed for FloatBarrier
 	
 	% TikZ
 	\usepackage{tikz}
@@ -163,7 +164,7 @@
 	% Place FloatBarrier before every section
 	\newcommand*{\origsection}{}
 	\let\origsection\section							
-	\renewcommand*{\section}{\FloatBarrier \origsection}
+	\renewcommand*{\section}{\FloatBarrier\origsection}
 
 	% Nicer marginpar placement
 	\newcommand*{\oldmarginpar}{}
