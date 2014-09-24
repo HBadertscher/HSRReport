@@ -1,7 +1,6 @@
 % Switch if background image is used or not.
 \newboolean{useBackgroundImage}
 \setboolean{useBackgroundImage}{true}
-	
 
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
 \begin{titlepage}
@@ -28,7 +27,7 @@
 		\node[anchor=west] at (34.5mm,125mm) (title) {\textcolor{white}{\huge\sffamily\bfseries\Title}};
 		\node[anchor=west] at (34.5mm,110mm) (title) {\textcolor{white}{\Large\sffamily\bfseries\Subject}};
 		\node[anchor=west] at (34.5mm,65mm) (author) {\textcolor{white}{\Large\sffamily\Author}};
-		\node[anchor=west] at (34.5mm,58mm) (author) {\textcolor{white}{\Large\sffamily\today}};
+		\node[anchor=west] at (34.5mm,58mm) (date) {\textcolor{white}{\Large\sffamily\titledate\today}};
 		
 	\end{tikzpicture}
 	

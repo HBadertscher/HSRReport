@@ -43,6 +43,10 @@
 
 	\usepackage{geometry}
 	\usepackage[komastyle]{scrpage2}		% Custom header and footer
+	
+	% Date and time format
+	\usepackage{datetime}
+	\newdateformat{titledate}{\THEDAY.~\monthname\space\THEYEAR}
 		
 	% Colors
 	\usepackage{xcolor}
@@ -170,3 +174,4 @@
 	\newcommand*{\oldmarginpar}{}
 	\let\oldmarginpar\marginpar
 	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\normalsize\textcolor{HSRBlue}{#1}}}}
+	
