@@ -21,16 +21,17 @@
 
 % main header file
 \include{header/header}
-\input{glossary.tex}
+\input{frontmatter/glossary.tex}
 
 % % % % % % % % % % % % % %
 \begin{document}
 
 	% Title and toc
 	\pagenumbering{roman}
-	\input{chapters/titlepage/titlepage}
-	\newpage
-	\newpage
+	\input{frontmatter/titlepage}
+	\cleardoublepage
+	\input{frontmatter/abstract}
+	\cleardoublepage
 	\tableofcontents
 	
 	% Main part
