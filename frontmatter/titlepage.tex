@@ -36,11 +36,11 @@
 		\node[anchor=south west,inner sep=0] at (20mm,19.2mm) {\includegraphics[width=60.6mm]{header/HSR_Logo_CMYK.eps}};
 		
 %		% Text
-		\node[anchor=west] at (34.5mm,140mm) (title) {\textcolor{white}{\Large\sffamily\bfseries\TitleInfo}};
-		\node[anchor=west] at (34.5mm,125mm) (title) {\textcolor{white}{\huge\sffamily\bfseries\Title}};
-		\node[anchor=west] at (34.5mm,110mm) (title) {\textcolor{white}{\Large\sffamily\bfseries\Subject}};
-		\node[anchor=west] at (34.5mm,65mm) (author) {\textcolor{white}{\Large\sffamily\Author}};
-		\node[anchor=west] at (34.5mm,58mm) (date) {\textcolor{white}{\Large\sffamily\titledate\today}};
+		\node[anchor=west] at (34.5mm,140mm) (titleinfo) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\bfseries\TitleInfo}}};
+		\node[anchor=west,below=5mm of titleinfo] (title) {\textcolor{white}{\parbox{104mm}{\huge\sffamily\bfseries\Title}}};
+		\node[anchor=west,below=3mm of title] (subject) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\bfseries\Subject}}};
+		\node[anchor=west] at (34.5mm,65mm) (author) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\Author}}};
+		\node[anchor=west] at (34.5mm,58mm) (date) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\titledate\today}}};
 		
 	\end{tikzpicture}
 	
