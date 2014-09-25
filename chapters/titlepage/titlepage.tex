@@ -1,8 +1,21 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% LaTex Titlepage according to HSR CI
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% "THE BEER-WARE LICENSE" (Revision 42):
+% Hannes Badertscher (hbaderts@hsr.ch) wrote this file. As long as you retain 
+% this notice you can do whatever you want with this stuff. If we meet some day, 
+% and you think this stuff is worth it, you can buy me a beer in return. 
+% - Hannes Badertscher
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+
 % Switch if background image is used or not.
 \newboolean{useBackgroundImage}
 \setboolean{useBackgroundImage}{true}
 
-\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}	% no margins
 \begin{titlepage}
 	
 	\begin{tikzpicture}
@@ -32,5 +45,5 @@
 	\end{tikzpicture}
 	
 \end{titlepage}
-\restoregeometry
+\restoregeometry	% restore margins
 

@@ -43,6 +43,7 @@
 
 	\usepackage{geometry}
 	\usepackage[komastyle]{scrpage2}		% Custom header and footer
+	\usepackage{pbox}
 	
 	% Date and time format
 	\usepackage{datetime}
@@ -121,20 +122,30 @@
 	\setfootwidth[0pt]{head}
 	\renewcommand{\headfont}{\normalfont\sffamily}
 	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-
-	\ohead{\leftmark}
-	\chead{}
-	\ihead{\includegraphics[width=49.5mm]{header/HSR_Logo_CMYK.eps}} % minimum allowed size
-	\ofoot{\Title}
-	\cfoot{\thepage}
-	\ifoot{\Author}	
-
+	
 	% Hack for large HSR logo
 	\setlength{\headheight}{20.5mm}		% because of logo
 	\setlength{\textheight}{\textheight-20.5mm}
 	\setheadsepline{0.4pt}
 	\setfootsepline{0.4pt}
 	
+	\newcommand*{\True}{true}
+	\ohead{\pbox[t][19.9mm][b]{3cm}{\leftmark~\\ \vspace{0.5mm}}}
+	\ifx \IsConfidential \True
+		\ifx \Lang \LangDE
+			\chead{\pbox[t][19.9mm][b]{3cm}{\scshape Vertraulich\\\vspace{0.5mm}}}
+		\else
+			\chead{\pbox[t][19.9mm][b]{3cm}{\scshape Confidential\\\vspace{0.5mm}}}
+		\fi
+	\else
+		\chead{}
+	\fi
+	
+	\ihead{\includegraphics[width=49.5mm]{header/HSR_Logo_CMYK.eps}} % minimum allowed size
+	\ofoot{\Title}
+	\cfoot{\thepage}
+	\ifoot{\Author}	
+
 	% Show header/footer on index page
 	\indexsetup{firstpagestyle=scrheadings}
 	
