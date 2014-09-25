@@ -28,9 +28,11 @@
 
 	% Title and toc
 	\pagenumbering{roman}
-	\input{frontmatter/titlepage}
+	\include{frontmatter/titlepage}
 	\cleardoublepage
-	\input{frontmatter/abstract}
+	\include{frontmatter/abstract}
+	\cleardoublepage
+	\include{frontmatter/acknowledgments}
 	\cleardoublepage
 	\tableofcontents
 	
@@ -57,6 +59,7 @@
 	% Glossary + Index
 	\printglossaries 
 	\printindex
+	
 	
 \end{document}
 % % % % % % % % % % % % % % 
