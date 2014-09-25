@@ -26,7 +26,7 @@
 % % % % % % % % % % % % % %
 \begin{document}
 
-	% Title and toc
+	% Frontmatter
 	\pagenumbering{roman}
 	\include{frontmatter/titlepage}
 	\cleardoublepage
@@ -42,23 +42,23 @@
 	
 	\include{chapters/bsp_chapter/bsp_chapter}
 
+	% Appendix
+	\cleardoublepage
+	\appendix
+
 	% List of figures, tables and bibliography
 	\clearpage
 		\listoffigures
 	\clearpage
 		\listoftables
 	\clearpage
-		\bibliography{bibliograpy}
+		\bibliography{frontmatter/bibliograpy}
 		\bibliographystyle{ieeetr}
-
-
-	% Appendix
-	\cleardoublepage
-	\appendix
 	
 	% Glossary + Index
 	\printglossaries 
 	\printindex
+	
 	
 	
 \end{document}
