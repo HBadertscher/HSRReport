@@ -91,6 +91,12 @@ and typically indented paragraph, a so-called block quotation, if they are
 longer than a certain number of lines or words. In the latter case no quotation
 marks are inserted.}
 
+\marginpar{SI Units}Any numbers and units should by typed using the siunitx package.
+Numbers are written as \num{1234} \num{3.45e-5} \numlist{1;2;4} \numrange{4}{30} \ang{10} \ang{5;3;2}.
+Units are written with \si{\kilo\gram\meter\per\square\second} or \SI{14}{\farad\tothe{4}}.
+Of course also possible is \SIlist{10;40;12}{\meter} or \SIrange{-40}{+125}{\degreeCelsius}
+Almost every unit you could possibly think of is implemented!
+
 \marginpar{Bibliography}The bibliography is created using \emph{Bibtex}. The
 standard format is set to \texttt{ieeetr}, which is the IEEE Standard. There
 are example entries for different types of  in the separate bibliography file
