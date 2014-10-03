@@ -175,6 +175,10 @@
 	\numberwithin{equation}{chapter}
 	\numberwithin{figure}{chapter}
 	\numberwithin{table}{chapter}
+	
+	% Setup captions
+	\setkomafont{captionlabel}{\scshape\color{HSRBlue}}
+	\captionsetup{labelsep=quad}
 		
 	% Place FloatBarrier before every section
 	\newcommand*{\origsection}{}
@@ -184,5 +188,5 @@
 	% Nicer marginpar placement
 	\newcommand*{\oldmarginpar}{}
 	\let\oldmarginpar\marginpar
-	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\normalsize\textcolor{HSRBlue}{#1}}}}
+	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\normalsize\textcolor{HSRBlue}{\scshape#1}}}}
 	
