@@ -47,17 +47,23 @@
 	\appendix
 
 	% List of figures, tables and bibliography
-	\clearpage
+	\cleardoublepage
+		\markleft{\listfigurename}
 		\listoffigures
-	\clearpage
+	\cleardoublepage
+		\markleft{\listtablename}
 		\listoftables
-	\clearpage
+	\cleardoublepage
 		\bibliography{frontmatter/bibliograpy}
 		\bibliographystyle{ieeetr}
 	
 	% Glossary + Index
-	\printglossaries 
-	\printindex
+	\cleardoublepage
+		\markleft{\glossaryname}
+		\printglossaries 
+	\cleardoublepage
+		\markleft{\indexname}
+		\printindex
 	
 	
 	
