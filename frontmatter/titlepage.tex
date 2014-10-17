@@ -41,7 +41,17 @@
 		\node[anchor=west] at (34.5mm,58mm) (date) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\titledate\today}}};
 		
 	\end{tikzpicture}
-	
+		
 \end{titlepage}
-\restoregeometry	% restore margins
 
+\pagestyle{empty}
+\hspace{2.5cm}
+\begin{minipage}[t][\textheight][b]{6cm}
+	\scriptsize
+	This document was typeset using \LaTeX~and KOMA-Script and the HSRReport style by H.Badertscher. \\
+	\Place,~\titledate\today
+	\vspace{2.5cm}
+\end{minipage}
+
+
+\restoregeometry	% restore margins
