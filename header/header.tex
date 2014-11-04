@@ -196,3 +196,22 @@
 	\let\oldmarginpar\marginpar
 	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\sffamily\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
 	
+% % % % % % % % % % % % % %
+% Chapter heading
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{
+	\vspace*{30\p@}
+	\hfill\sffamily\huge\textbf{#1}	
+	\quad
+	\fontsize{60pt}{3em}\textcolor{HSRBlue}{\textbf{\thechapter}}
+	\vskip 20\p@
+	\normalfont\normalsize
+}
+
+\renewcommand{\@makeschapterhead}[1]{
+	\vspace*{30\p@}
+	\hfill\sffamily\huge\textbf{#1}
+	\vskip 20\p@
+	\normalfont\normalsize
+}
+\makeatother
