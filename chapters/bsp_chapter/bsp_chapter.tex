@@ -111,3 +111,15 @@ The first time, it will be \emph{\gls{svm}}.
 The second time: \emph{\gls{svm}}.
 The glossary has to be created manually by invoking \texttt{makeindex -s doku.ist -t doku.glg -o doku.gls doku.glo}.
 The index is simply created by using \texttt{index\{text\}}. It is generated automatically.
+
+\subsection{Listings}
+Listings are created by the \texttt{lstlistings} package.
+MATLAB code can be inserted with the matlab-prettifier package.
+
+\begin{lstlisting}[style=Matlab-editor]
+% Some test program
+n = 5;
+for k=1:n
+   x(k) = k^2;
+end	
+\end{lstlisting}
