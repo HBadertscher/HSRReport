@@ -180,11 +180,15 @@
 	\let\oldmarginpar\marginpar
 	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
 	
+	% Itemize item
+	\newcommand{\hsrlistitem}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
+	\renewcommand{\labelitemi}{\hsrlistitem}
+	
 % % % % % % % % % % % % % %
 % Chapter heading
 \makeatletter
 \renewcommand{\@makechapterhead}[1]{
-	\vspace*{30\p@}
+	\vspace*{40\p@}
 	\hfill
 	\begin{minipage}[b]{11cm}
 		\raggedleft
