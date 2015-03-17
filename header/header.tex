@@ -50,7 +50,7 @@
 	\usepackage{csquotes}		% Swiss quotes: \enquote{}, \textquote{}, \blockquote{}
 
 	\usepackage{geometry}
-	\usepackage[komastyle]{scrpage2}		% Custom header and footer
+	\usepackage[komastyle,automark]{scrpage2}		% Custom header and footer
 	\usepackage{pbox}
 	
 	% Date and time format
@@ -97,6 +97,7 @@
 	
 	% Glossary
 	\usepackage[toc]{glossaries}
+	\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
 	
 	% Index
 	\usepackage{imakeidx}
@@ -128,39 +129,12 @@
 	}
 		
 	% header and footer
-	\clearscrheadfoot
-	\renewcommand*\chapterpagestyle{scrheadings}
 	\pagestyle{scrheadings}
-
-	\setheadwidth[0pt]{textwithmarginpar}
-	\setfootwidth[0pt]{head}
 	\renewcommand{\headfont}{\normalfont\sffamily}
-	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}	
-	
-	% Hack for large HSR logo
-	\setlength{\headheight}{20.5mm}		% because of logo
-	\setlength{\textheight}{\textheight-20.5mm}
-	\setheadsepline{0.4pt}
-	\setfootsepline{0.4pt}
-	
-	\newcommand*{\True}{true}
-	\ohead{\pbox[t][19.9mm][b]{6.5cm}{\leftmark~\\ \vspace{0.5mm}}}
-	
-	\ifx \IsConfidential \True
-		\ifx \Lang \LangDE
-			\chead{\pbox[t][19.9mm][b]{3cm}{\scshape Vertraulich\\\vspace{0.5mm}}}
-		\else
-			\chead{\pbox[t][19.9mm][b]{3cm}{\scshape Confidential\\\vspace{0.5mm}}}
-		\fi
-	\else
-		\chead{}
-	\fi
-	
-	\ihead{\includegraphics[width=49.5mm]{header/HSR_Logo_CMYK.eps}} % minimum allowed size
-	\lefoot{\parbox[t][1em][t]{7cm}{\raggedright\Title}}
-	\rofoot{\parbox[t][1em][t]{7cm}{\raggedleft\Title}}
-	\cfoot{\thepage}
-	\ifoot{\Author}
+	\renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter~-~#1}{}}	
+    \setheadsepline[text]{0.4pt}
+    \rohead{\rightmark}
+    \lehead{\leftmark}
 
 	% Show header/footer on index page
 	\indexsetup{firstpagestyle=scrheadings}
@@ -218,7 +192,7 @@
 }
 
 \renewcommand{\@makeschapterhead}[1]{
-	\vspace*{30\p@}
+	\vspace*{40\p@}
 	\hfill
 	\begin{minipage}[b]{11cm}
 		\raggedleft
