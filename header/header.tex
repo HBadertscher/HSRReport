@@ -10,6 +10,11 @@
 % - Hannes Badertscher
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
+% Warnings for obsolete packages
+\RequirePackage[l2tabu, orthodox]{nag}
+
+% Load extended TeX
+\RequirePackage{etex}
 
 % Document class and language
 \documentclass[
@@ -34,7 +39,7 @@
 	\usepackage[T1]{fontenc}
 	
 	\usepackage{scrhack}								% fix koma-script incompatibilities
-	\usepackage{mparhack}								% important! needed for nice marginpar placement
+	\usepackage{mparhack}								% needed for nice marginpar placement
 	\newcommand*{\LangDE}{de}
 	\ifx \Lang \LangDE
 		\usepackage[english,ngerman]{babel}					% Main language: German
@@ -74,7 +79,6 @@
 	\usepackage{pdfpages}
 	\usepackage{epstopdf}
 	\usepackage{adjustbox}
-	\usepackage{placeins}	% needed for FloatBarrier
 	
 	% TikZ
 	\usepackage{tikz}
@@ -187,11 +191,6 @@
 	% Setup captions
 	\setkomafont{captionlabel}{\scshape\color{HSRBlue}}
 	\captionsetup{labelsep=quad}
-		
-	% Place FloatBarrier before every section
-	\newcommand*{\origsection}{}
-	\let\origsection\section							
-	\renewcommand*{\section}{\FloatBarrier\origsection}
 
 	% Nicer marginpar placement
 	\newcommand*{\oldmarginpar}{}
