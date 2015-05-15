@@ -211,3 +211,15 @@
 	\normalfont\normalsize
 }
 \makeatother
+
+% % % % % % % % % % % % % %
+% PGF-Plots default plot format
+
+\pgfplotscreateplotcyclelist{hsrcolorlist}{%
+    HSRSchwarz,every mark/.append style={solid,fill=HSRSchwarz}     \\%
+    HSRBlue,every mark/.append style={solid,fill=HSRBlue}           \\%
+    HSRHematite,every mark/.append style={solid,fill=HSRHematite}   \\%
+    HSRBasswood,every mark/.append style={solid,fill=HSRBasswood}   \\%
+}
+
+\pgfplotsset{cycle multi list={mark list\nextlist hsrcolorlist}}
