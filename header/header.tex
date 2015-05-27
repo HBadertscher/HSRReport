@@ -136,7 +136,9 @@
 	% header and footer
 	\pagestyle{scrheadings}
 	\renewcommand{\headfont}{\normalfont\sffamily}
-	\renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter~-~#1}{}}	
+	\makeatletter
+	\renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~-~#1}{}}	
+	\makeatother
     \setheadsepline[text]{0.4pt}
     \rohead{\rightmark}
     \lehead{\leftmark}
