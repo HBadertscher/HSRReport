@@ -18,199 +18,200 @@
 
 % Document class and language
 \documentclass[
-	11pt,               % font size
-	final,
-	parskip=half,       % half a line skipped between paragraphs
-	twoside,	        % two-sided document
-	openright,			% chapters start on right pages
-	bibliography=totoc,
-	listof=totoc
+    11pt,               % font size
+    final,
+    parskip=half,       % half a line skipped between paragraphs
+    twoside,            % two-sided document
+    openright,          % chapters start on right pages
+    bibliography=totoc,
+    listof=totoc
 ]{scrreprt}           % koma-script report
 
 
-% Load Packages
+% % % % % % % % % % % % % %
+% Packages
 
-	% Basic stuff
-	\usepackage[utf8]{inputenc}
+    % Basic stuff
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[final]{microtype}
 
-    \usepackage[scaled=0.88]{beraserif}
-    \usepackage[scaled=0.85]{berasans}
-    \usepackage[scaled=0.84]{beramono}
-	\usepackage[sc]{mathpazo}				% use palatino font!
-	\linespread{1.05}        				% palatino needs a bit more space!
-	\usepackage[T1,small,euler-digits]{eulervm}
-	
-	\usepackage[T1]{fontenc}
-	\usepackage[final]{microtype}
-	
-	\usepackage{scrhack}								% fix koma-script incompatibilities
-	\usepackage{mparhack}								% needed for nice marginpar placement
-	\newcommand*{\LangDE}{de}
-	\ifx \Lang \LangDE
-		\usepackage[english,ngerman]{babel}					% Main language: German
-	\else
-		\usepackage[ngerman,english]{babel}					% Main language: English
-	\fi
+    % Fonts
+    \usepackage[scaled=0.85]{berasans}            % Sans-serif: Bera Sans
+    \usepackage[scaled=0.84]{beramono}            % Mono-space: Bera Mono
+    \usepackage[sc]{mathpazo}                     % Serif: Palatino
+    \usepackage[T1,small,euler-digits]{eulervm}   % Math: EulerVM
+    \linespread{1.05}                             % More linespread for Palatino
 
-	\usepackage{csquotes}		% Swiss quotes: \enquote{}, \textquote{}, \blockquote{}
+    % Some hacks
+    \usepackage{scrhack}    % fix koma-script incompatibilities
+    \usepackage{mparhack}   % needed for nice marginpar placement
 
-	\usepackage{geometry}
-	\usepackage[komastyle,automark]{scrpage2}		% Custom header and footer
-	\usepackage{pbox}
-	
-	% Date and time format
-	\usepackage{datetime}
-	\newdateformat{titledate}{\THEDAY.~\monthname\space\THEYEAR}
-		
-	% Colors
-	\usepackage{xcolor}
-	\usepackage{header/HSRColors}
-												
-	% Math
-	\usepackage{amsmath}
-	\usepackage{amssymb}
-	
-	% Tables
-	\usepackage{multirow}
-	\usepackage{multicol}
-	\usepackage{tabularx}
-	\usepackage{longtable}
-	\usepackage{booktabs}
-	
-	% Figures
-	\usepackage{caption}
-	\usepackage{subcaption}
-	\usepackage{rotating}
-	\usepackage{pdfpages}
-	\usepackage{epstopdf}
-	\usepackage{adjustbox}
-	
-	% TikZ
-	\usepackage{tikz}
-	\usetikzlibrary{arrows,backgrounds,fit,positioning,petri,trees}
-	\usepackage[american currents]{circuitikz}
-	\usepackage{tikz-timing}[2009/12/09]
-	\usepackage{pgfplots}
+    % Choose document language
+    \newcommand*{\LangDE}{de}
+    \ifx \Lang \LangDE
+        \usepackage[english,ngerman]{babel}  % Main language: German
+    \else
+        \usepackage[ngerman,english]{babel}  % Main language: English
+    \fi
 
-	% Listings
-	\input{header/listings}
-	\usepackage{matlab-prettifier}
-	
-	% SI Units
-	\usepackage{siunitx}
-	\sisetup{detect-all,sticky-per,per-mode=symbol}
-	
-	% Glossary
-	\usepackage[toc]{glossaries}
-	\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
-	
-	% Chemical formulae
-	\usepackage[version=3]{mhchem}
-	
-	% Index
-	\usepackage{imakeidx}
-	\makeindex[intoc,columnseprule]
-	
-	\setquotestyle[quotes]{german}
+    % Document setup
+    \usepackage{geometry}                      % To set document size
+    \usepackage[komastyle,automark]{scrpage2}  % Custom header and footer
+    \usepackage{multicol}                      % Allow multicolumn document
+
+    % Date and time format
+    \usepackage{datetime}
+    \newdateformat{titledate}{\THEDAY.~\monthname\space\THEYEAR}
+
+    % Colors
+    \usepackage{xcolor}
+    \usepackage{header/HSRColors}
+
+    % Math
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+
+    % Tables
+    \usepackage{multirow}
+    \usepackage{tabularx}
+    \usepackage{booktabs}
+
+    % Figures
+    \usepackage{caption}
+    \usepackage{subcaption}
+    \usepackage{rotating}
+    \usepackage{pdfpages}
+    \usepackage{epstopdf}
+
+    % TikZ
+    \usepackage{tikz}
+    \usetikzlibrary{positioning}
+    \usepackage[american currents]{circuitikz}
+    \usepackage{tikz-timing}[2009/12/09]
+    \usepackage{pgfplots}
+
+    % Listings
+    \input{header/listings}
+    \usepackage{matlab-prettifier}
+
+    % SI Units
+    \usepackage{siunitx}
+    \sisetup{detect-all,sticky-per,per-mode=symbol}
+
+    % Glossary
+    \usepackage[toc]{glossaries}
+    \renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
+
+    % Chemical formulae
+    \usepackage[version=4]{mhchem}
+
+    % Index
+    \usepackage{imakeidx}
+    \makeindex[intoc,columnseprule]
+
+    % Quotation marks
+    \usepackage{csquotes}
+    \setquotestyle[quotes]{german}
 
 % % % % % % % % % % % % % %
-% Document Setup
+% Document Settings
 
-	% Author and title of document
-	\author{\Author}
-	\title{\Title}
-	\date{\today}
-	
-	% page format
-	\geometry{
-		a4paper,
-		twoside,
-		top=30mm,
-		bottom=30mm,
-		left=25mm,
-		right=50mm,
-		marginparwidth=30mm,
-		marginparsep=5mm
-	}
-		
-	% header and footer
-	\pagestyle{scrheadings}
-	\renewcommand{\headfont}{\normalfont\sffamily}
-	\makeatletter
-	\renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~-~#1}{}}	
-	\makeatother
+    % Author and title of document
+    \author{\Author}
+    \title{\Title}
+    \date{\today}
+
+    % Page format
+    \geometry{
+        a4paper,
+        twoside,
+        top=30mm,
+        bottom=30mm,
+        left=25mm,
+        right=50mm,
+        marginparwidth=30mm,
+        marginparsep=5mm
+    }
+
+    % Header and footer
+    \pagestyle{scrheadings}
+    \renewcommand{\headfont}{\normalfont\sffamily}
+    \makeatletter
+        \renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~-~#1}{}}	
+    \makeatother
     \setheadsepline[text]{0.4pt}
     \rohead{\rightmark}
     \lehead{\leftmark}
 
-	% Show header/footer on index page
-	\indexsetup{firstpagestyle=plain}
-	
-	% PDF information
-	\usepackage[
-		pdftitle={\Title},
-		pdfauthor={\Author},
-		pdfsubject={\Subject},
-		pdfkeywords={\Keywords},  
-		pdflang={\Lang},
-		pdfpagemode=UseOutlines,		% Show outlines when opening pdf.
-		pdfdisplaydoctitle=true,		% Show document title in pdf viewer.
-		pdfcreator={LaTeX with hyperref and KOMA-Script},
-		colorlinks=true,
-		linkcolor=HSRBlue,
-		citecolor=HSRBlue,
-		filecolor=HSRBlue,
-		urlcolor=HSRBlue,
-		bookmarksnumbered=true
-	]{hyperref}
-	
-	% Setup toc and section numbering depth
-	\setcounter{tocdepth}{2}
-	\setcounter{secnumdepth}{4}
-	
-	% Number equations, figures, tables within chapters
-	\numberwithin{equation}{chapter}
-	\numberwithin{figure}{chapter}
-	\numberwithin{table}{chapter}
-	
-	% Setup captions
-	\setkomafont{captionlabel}{\scshape\color{HSRBlue}}
-	\captionsetup{labelsep=quad}
+    % Show header/footer on index page
+    \indexsetup{firstpagestyle=plain}
 
-	% Nicer marginpar placement
-	\newcommand*{\oldmarginpar}{}
-	\let\oldmarginpar\marginpar
-	\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
-	
-	% Itemize item
-	\newcommand{\hsrlistitem}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
-	\renewcommand{\labelitemi}{\hsrlistitem}
-	
+    % PDF information
+    \usepackage[
+        pdftitle={\Title},
+        pdfauthor={\Author},
+        pdfsubject={\Subject},
+        pdfkeywords={\Keywords},
+        pdflang={\Lang},
+        pdfpagemode=UseOutlines,  % Show outlines when opening pdf.
+        pdfdisplaydoctitle=true,  % Show document title in pdf viewer.
+        pdfcreator={LaTeX with hyperref and KOMA-Script},
+        colorlinks=true,
+        linkcolor=HSRBlue,
+        citecolor=HSRBlue,
+        filecolor=HSRBlue,
+        urlcolor=HSRBlue,
+        bookmarksnumbered=true
+    ]{hyperref}
+
+    % Setup toc and section numbering depth
+    \setcounter{tocdepth}{2}
+    \setcounter{secnumdepth}{4}
+
+    % Number equations, figures, tables within chapters
+    \numberwithin{equation}{chapter}
+    \numberwithin{figure}{chapter}
+    \numberwithin{table}{chapter}
+
+    % Setup captions
+    \setkomafont{captionlabel}{\scshape\color{HSRBlue}}
+    \captionsetup{labelsep=quad}
+
+    % Nicer marginpar placement
+    \newcommand*{\oldmarginpar}{}
+    \let\oldmarginpar\marginpar
+    \renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
+
+    % Itemize item
+    \newcommand{\hsrlistitem}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
+    \renewcommand{\labelitemi}{\hsrlistitem}
+
 % % % % % % % % % % % % % %
-% Chapter heading
+% Chapter headings
 \makeatletter
 \renewcommand{\@makechapterhead}[1]{
-	\vspace*{40\p@}
-	\hfill
-	\begin{minipage}[b]{11cm}
-		\raggedleft
-		\sffamily\huge\textbf{#1}	
-	\end{minipage}
-	\quad
-	\sffamily\fontsize{60pt}{3em}\textcolor{HSRBlue}{\textbf{\thechapter}}
-	\vskip 20\p@
-	\normalfont\normalsize
+    \vspace*{40\p@}
+    \hfill
+    \begin{minipage}[b]{11cm}
+        \raggedleft
+        \sffamily\huge\textbf{#1}
+    \end{minipage}
+    \quad
+    \sffamily\fontsize{60pt}{3em}\textcolor{HSRBlue}{\textbf{\thechapter}}
+    \vskip 20\p@
+    \normalfont\normalsize
 }
 
 \renewcommand{\@makeschapterhead}[1]{
-	\vspace*{40\p@}
-	\hfill
-	\begin{minipage}[b]{11cm}
-		\raggedleft
-		\sffamily\huge\textbf{#1}	
-	\end{minipage}
-	\vskip 20\p@
-	\normalfont\normalsize
+    \vspace*{40\p@}
+    \hfill
+    \begin{minipage}[b]{11cm}
+        \raggedleft
+        \sffamily\huge\textbf{#1}
+    \end{minipage}
+    \vskip 20\p@
+    \normalfont\normalsize
 }
 \makeatother
 
