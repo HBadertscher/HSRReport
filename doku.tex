@@ -11,13 +11,13 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 % Document information
-\newcommand*{\Author}			{Hannes Badertscher} 
-\newcommand*{\Title}			{Some crappy long title for testing if this works}
-\newcommand*{\TitleInfo}		{Bachelor Thesis}
-\newcommand*{\Subject}			{Short description of subject, though maybe a bit too long for the text.}
-\newcommand*{\Keywords}			{keyword, even more keywords, and one more}
-\newcommand*{\Lang}				{en} 	% document language
-\newcommand*{\IsConfidential}	{true}
+\newcommand*{\Author}           {Hannes Badertscher} 
+\newcommand*{\Title}            {Some crappy long title for testing if this works}
+\newcommand*{\TitleInfo}        {Bachelor Thesis}
+\newcommand*{\Subject}          {Short description of subject, though maybe a bit too long for the text.}
+\newcommand*{\Keywords}         {keyword, even more keywords, and one more}
+\newcommand*{\Lang}             {en} % document language: de or en
+\newcommand*{\IsConfidential}   {true}
 \newcommand*{\Place}            {Rapperswil}
 
 % main header file
@@ -27,49 +27,47 @@
 % % % % % % % % % % % % % %
 \begin{document}
 
-	% Frontmatter
-	\pagenumbering{roman}
-	\include{frontmatter/titlepage}
-	\cleardoublepage
-	\markleft{\abstractname}
-	\include{frontmatter/abstract}
-	\cleardoublepage
-	\markleft{Acknowledgments}
-	\include{frontmatter/acknowledgments}
-	\cleardoublepage
-	\markleft{\contentsname}
-	\tableofcontents
-	
-	% Main part
-	\cleardoublepage
-	\pagenumbering{arabic} 
-	
-	\include{chapters/bsp_chapter/bsp_chapter}
+    % Frontmatter
+    \pagenumbering{roman}
+    \include{frontmatter/titlepage}
+    \cleardoublepage
+    \markleft{\abstractname}
+    \include{frontmatter/abstract}
+    \cleardoublepage
+    \markleft{Acknowledgments}
+    \include{frontmatter/acknowledgments}
+    \cleardoublepage
+    \markleft{\contentsname}
+    \tableofcontents
 
-	% Appendix
-	\cleardoublepage
-	\appendix
+    % Main part
+    \cleardoublepage
+    \pagenumbering{arabic} 
 
-	% List of figures, tables and bibliography
-	\cleardoublepage
-		\markleft{\listfigurename}
-		\listoffigures
-	\cleardoublepage
-		\markleft{\listtablename}
-		\listoftables
-	\cleardoublepage
-		\bibliography{frontmatter/bibliograpy}
-		\bibliographystyle{ieeetr}
-	
-	% Glossary + Index
-	\cleardoublepage
-		\markleft{\glossaryname}
-		\printglossaries 
-	\cleardoublepage
-		\markleft{\indexname}
-		\printindex
-	
-	
-	
+    \include{chapters/bsp_chapter/bsp_chapter}
+
+    % Appendix
+    \cleardoublepage
+    \appendix
+
+    % List of figures, tables and bibliography
+    \cleardoublepage
+    \markleft{\listfigurename}
+    \listoffigures
+    \cleardoublepage
+    \markleft{\listtablename}
+    \listoftables
+    \cleardoublepage
+    \bibliography{frontmatter/bibliograpy}
+    \bibliographystyle{ieeetr}
+
+    % Glossary + Index
+    \cleardoublepage
+    \markleft{\glossaryname}
+    \printglossaries 
+    \cleardoublepage
+    \markleft{\indexname}
+    \printindex
+
 \end{document}
 % % % % % % % % % % % % % % 
