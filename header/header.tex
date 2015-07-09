@@ -59,6 +59,7 @@
     \usepackage{geometry}                      % To set document size
     \usepackage[komastyle,automark]{scrpage2}  % Custom header and footer
     \usepackage{multicol}                      % Allow multicolumn document
+    \usepackage{appendix}                      % Create appendix page
 
     % Date and time format
     \usepackage{datetime}
@@ -212,6 +213,38 @@
     \end{minipage}
     \vskip 20\p@
     \normalfont\normalsize
+}
+\makeatother
+
+% % % % % % % % % % % % % %
+% Change appendix page
+\makeatletter
+\renewcommand{\@chap@pppage}{%
+    \clear@ppage
+    \thispagestyle{empty} % this was 'plain' before
+    \if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
+    \null\vfil
+    \markboth{}{}%
+    {%
+        \centering
+        \interlinepenalty \@M
+        \normalfont
+        \Huge \bfseries\sffamily \appendixpagename\par % this was rmfamily
+    }%
+    \if@dotoc@pp
+        \addappheadtotoc
+    \fi
+    \vfil\newpage
+    \if@twoside
+        \if@openright
+            \null
+            \thispagestyle{empty}%
+            \newpage
+        \fi
+    \fi
+    \if@tempswa
+        \twocolumn
+    \fi
 }
 \makeatother
 
