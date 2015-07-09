@@ -184,9 +184,14 @@
     \let\oldmarginpar\marginpar
     \renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
 
-    % Itemize item
-    \newcommand{\hsrlistitem}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
-    \renewcommand{\labelitemi}{\hsrlistitem}
+    % Itemize items
+    \newcommand{\hsrlistitemi}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
+    \newcommand{\hsrlistitemii}{\textcolor{HSRLightGray}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
+    \newcommand{\hsrlistitemiii}{\textcolor{HSRLightGray}{\raisebox{.3ex}{\tiny$\blacktriangleright$}}}
+    
+    \renewcommand{\labelitemi}{\hsrlistitemi}
+    \renewcommand{\labelitemii}{\hsrlistitemii}
+    \renewcommand{\labelitemiii}{\hsrlistitemiii}
 
 % % % % % % % % % % % % % %
 % Chapter headings
