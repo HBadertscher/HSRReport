@@ -254,13 +254,17 @@
 \makeatother
 
 % % % % % % % % % % % % % %
-% PGF-Plots default plot format
+% TikZ and PGF Plots default formats
 
+% Use Sans-Serif family in TikZ graphics
+\tikzset{font=\sffamily}
+
+% Create cycle list with HSR colors
 \pgfplotscreateplotcyclelist{hsrcolorlist}{%
     HSRSchwarz,every mark/.append style={solid,fill=HSRSchwarz}     \\%
     HSRBlue,every mark/.append style={solid,fill=HSRBlue}           \\%
     HSRHematite,every mark/.append style={solid,fill=HSRHematite}   \\%
     HSRBasswood,every mark/.append style={solid,fill=HSRBasswood}   \\%
 }
-
+% Setup pgfplots default format
 \pgfplotsset{cycle multi list={mark list\nextlist hsrcolorlist}}
