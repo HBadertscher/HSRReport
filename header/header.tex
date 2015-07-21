@@ -23,9 +23,10 @@
     parskip=half,       % half a line skipped between paragraphs
     twoside,            % two-sided document
     openright,          % chapters start on right pages
-    bibliography=totoc,
-    listof=totoc
-]{scrreprt}           % koma-script report
+    bibliography=totoc, % bibliography in toc
+    listof=totoc,       % lof and lot in toc
+    BCOR=10mm           % binding offset: 10mm (for spiral bindings etc.)
+]{scrreprt}             % koma-script report
 
 
 % % % % % % % % % % % % % %
@@ -56,7 +57,6 @@
     \fi
 
     % Document setup
-    \usepackage{geometry}                      % To set document size
     \usepackage[komastyle,automark]{scrpage2}  % Custom header and footer
     \usepackage{multicol}                      % Allow multicolumn document
     \usepackage{appendix}                      % Create appendix page
@@ -122,18 +122,6 @@
     \author{\Author}
     \title{\Title}
     \date{\today}
-
-    % Page format
-    \geometry{
-        a4paper,
-        twoside,
-        top=30mm,
-        bottom=30mm,
-        left=25mm,
-        right=50mm,
-        marginparwidth=30mm,
-        marginparsep=5mm
-    }
 
     % Header and footer
     \pagestyle{scrheadings}
