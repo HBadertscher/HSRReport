@@ -10,24 +10,18 @@
 % - Hannes Badertscher
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
-
-% Switch if background image is used or not.
-\newboolean{useBackgroundImage}
-\setboolean{useBackgroundImage}{true}
-
-\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm} % no margins
 \begin{titlepage}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[remember picture,overlay,shift=(current page.south west)]
 
         % Background image
-        \ifthenelse{\boolean{useBackgroundImage}}
-        {\node[anchor=center,inner sep=0pt] at (105mm,148.5mm) (bgimage){\includegraphics[width=209mm,height=296mm]{frontmatter/Titelbild_bsp.jpg}};}
+        \ifthenelse{\equal{\TitleImage}{}}
         {\draw[draw=none,fill=none,inner sep=0pt] (0,0) rectangle (209mm,296mm);}
+        {\node[anchor=center,inner sep=0pt] at (105mm,148.5mm) (bgimage){\includegraphics[width=209mm,height=296mm]{\TitleImage}};}
 
         % HSR square
-        \ifthenelse{\boolean{useBackgroundImage}}
-        {\draw[draw=none,fill=HSRBlue80,opacity=0.85] (24.5mm,28.4mm) rectangle (148.5mm,152.4mm);}
+        \ifthenelse{\equal{\TitleImage}{}}
         {\draw[draw=none,fill=HSRBlue] (24.5mm,28.4mm) rectangle (148.5mm,152.4mm);}
+        {\draw[draw=none,fill=HSRBlue80,opacity=0.85] (24.5mm,28.4mm) rectangle (148.5mm,152.4mm);}
 
         % HSR logo
         \node[anchor=south west,inner sep=0] at (20mm,19.2mm) {\includegraphics[width=60.6mm]{header/HSR_Logo_CMYK.eps}};
@@ -48,13 +42,10 @@
     \end{tikzpicture}
 \end{titlepage}
 
+% Verso of title page
 \thispagestyle{empty}
-\hspace{2.5cm}
-\begin{minipage}[t][\textheight][b]{6cm}
+\begin{minipage}[t][\textheight][b]{5.8cm}
     \scriptsize
     This document was typeset using \LaTeX~and KOMA-Script and the HSRReport style by H.Badertscher. \\
-    \Place,~\titledate\today
-    \vspace{2.5cm}
+    \Place,~\titledate\today\hfill
 \end{minipage}
-
-\restoregeometry % restore margins
