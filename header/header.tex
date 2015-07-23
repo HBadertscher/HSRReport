@@ -250,5 +250,14 @@
     HSRHematite,every mark/.append style={solid,fill=HSRHematite}   \\%
     HSRBasswood,every mark/.append style={solid,fill=HSRBasswood}   \\%
 }
-% Setup pgfplots default format
+% Set default cycle list for plots
 \pgfplotsset{cycle multi list={mark list\nextlist hsrcolorlist}}
+
+% Set default cycle list for bar plots
+\pgfplotsset{
+    /pgfplots/bar cycle list/.style={/pgfplots/cycle list={%
+        {HSRBlue,fill=HSRBlue60,mark=none},%
+        {HSRHematite,fill=HSRHematite60,mark=none},%
+        {HSRBasswood,fill=HSRBasswood60,mark=none},%
+    }}
+}
