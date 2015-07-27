@@ -39,7 +39,10 @@
     \include{frontmatter/acknowledgments}
     \cleardoublepage
     \markleft{\contentsname}
-    \tableofcontents
+    {
+        \hypersetup{hidelinks}    % Don't format as links
+        \tableofcontents
+    }
 
     % Main part
     \cleardoublepage
