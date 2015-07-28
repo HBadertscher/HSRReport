@@ -149,6 +149,12 @@
         urlcolor=HSRBlue,
         bookmarksnumbered=true
     ]{hyperref}
+    
+    % If \Print=true, then make all links black for nicer print
+    \providecommand*{\True}{true}
+    \ifx \Print \True
+        \hypersetup{hidelinks}
+    \fi
 
     % Setup toc and section numbering depth
     \setcounter{tocdepth}{2}
