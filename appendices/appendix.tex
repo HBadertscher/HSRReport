@@ -1,0 +1,34 @@
+% Appendix
+\appendix
+\appendixpage
+\noappendicestocpagenum
+\addappheadtotoc
+
+% List of figures
+\cleardoublepage
+{
+    \hypersetup{hidelinks}
+    \markleft{\listfigurename}
+    \listoffigures
+}
+
+% List of tables
+\cleardoublepage
+{
+    \hypersetup{hidelinks}
+    \markleft{\listtablename}
+    \listoftables
+}
+
+% Bibliography
+\cleardoublepage
+\bibliography{frontmatter/bibliograpy}
+\bibliographystyle{ieeetr}
+
+% Glossary + Index
+\cleardoublepage
+\markleft{\glossaryname}
+\printglossaries
+\cleardoublepage
+\markleft{\indexname}
+\printindex
