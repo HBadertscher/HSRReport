@@ -176,6 +176,18 @@
     \renewcommand{\labelitemi}{\hsrlistitemi}
     \renewcommand{\labelitemii}{\hsrlistitemii}
     \renewcommand{\labelitemiii}{\hsrlistitemiii}
+    
+    % Autoref names
+    \addto\extrasenglish{% English
+        \renewcommand*{\figureautorefname}{Fig.}             % fig:
+        \renewcommand*{\tableautorefname}{Tab.}              % tab:
+        \renewcommand*{\equationautorefname}{Eq.}            % eq:
+    }
+    \addto\extrasngerman{% German
+        \renewcommand*{\figureautorefname}{Abb.}             % fig:
+        \renewcommand*{\tableautorefname}{Tab.}              % tab:
+        \renewcommand*{\equationautorefname}{Gl.}            % eq:
+    }
 
 % % % % % % % % % % % % % %
 % Chapter headings

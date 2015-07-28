@@ -20,7 +20,7 @@ all important equations.
 \end{equation}
 
 There are several environments for multi line equations. A very useful one
-is \emph{align}, see equation \ref{equ:bsp_chapter:example_align}.
+is \emph{align}, see equation \eqref{equ:bsp_chapter:example_align}.
 
 \begin{align}
     \oint \vec{E} \cdot d \vec{A} &= \frac{q}{\epsilon_0} \\
@@ -33,7 +33,7 @@ is \emph{align}, see equation \ref{equ:bsp_chapter:example_align}.
 Images\index{Image} are always inserted inside a \emph{figure}
 environment. If possible, it is advisable to use \texttt{[tb]} as position.
 Always remember to add a caption and a label, so you can reference the image
-like this: \ref{fig:bsp_chapter:example_figure}. If possible, images should be
+like this: \autoref{fig:bsp_chapter:example_figure}. If possible, images should be
 inserted as vector graphics, e.g. \texttt{eps} or \texttt{pdf} - or even drawn
 manually in TikZ.
 
@@ -45,7 +45,7 @@ manually in TikZ.
 \end{figure}
 
 Tables\index{Table} can be used quite similarly. They are inserted inside a \emph{table}\index{Table!tabular}
-environment, as shown in table \ref{tab:bsp_chapter:example_table}.
+environment, as shown in \autoref{tab:bsp_chapter:example_table}.
 
 \begin{table}[t]
     \centering
@@ -60,7 +60,7 @@ environment, as shown in table \ref{tab:bsp_chapter:example_table}.
 
 Another useful tool is the \emph{tabularx} environment. \index{Table!tabularx}
 It lets the user specify the total width of the table, instead of each column. 
-An example is shown in table \ref{tab:bsp_chapter:example_tabularx}.
+An example is shown in \autoref{tab:bsp_chapter:example_tabularx}.
 
 \begin{table}[t]
     \centering
