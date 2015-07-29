@@ -33,9 +33,9 @@
         \node[anchor=west,below=3mm of title] (subject) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\Subject}}};
         \ifx \IsConfidential \True
             \ifx \Lang \LangDE
-                \node[anchor=west,below=5mm of subject] (conf) {\textcolor{white}{\parbox{104mm}{\LARGE\scshape Vertraulich}}};
+                \node[anchor=west,below=5mm of subject] (conf) {\textcolor{white}{\parbox{104mm}{\LARGE\MakeUppercase{Vertraulich}}}};
             \else
-                \node[anchor=west,below=5mm of subject] (conf) {\textcolor{white}{\parbox{104mm}{\LARGE\scshape Confidential}}};
+                \node[anchor=west,below=5mm of subject] (conf) {\textcolor{white}{\parbox{104mm}{\LARGE\MakeUppercase{Confidential}}}};
             \fi
         \fi
         \node[anchor=west] at (34.5mm,65mm) (author) {\textcolor{white}{\parbox{104mm}{\Large\sffamily\Author}}};
