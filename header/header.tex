@@ -25,7 +25,6 @@
     openright,          % chapters start on right pages
     bibliography=totoc, % bibliography in toc
     listof=totoc,       % lof and lot in toc
-    BCOR=10mm           % binding offset: 10mm (for spiral bindings etc.)
 ]{scrreprt}             % koma-script report
 
 
@@ -119,6 +118,9 @@
     \title{\Title}
     \date{\today}
 
+    % Calculate page sizes with 10mm binding offset
+    \typearea[10mm]{calc}
+
     % Header and footer
     \pagestyle{scrheadings}
     \renewcommand{\headfont}{\normalfont\sffamily}
@@ -201,7 +203,7 @@
 \renewcommand{\@makechapterhead}[1]{
     \vspace*{40\p@}
     \hfill
-    \begin{minipage}[b]{11cm}
+    \begin{minipage}[b]{9cm}
         \raggedleft
         \sffamily\huge\textbf{#1}
     \end{minipage}
@@ -214,7 +216,7 @@
 \renewcommand{\@makeschapterhead}[1]{
     \vspace*{40\p@}
     \hfill
-    \begin{minipage}[b]{11cm}
+    \begin{minipage}[b]{9cm}
         \raggedleft
         \sffamily\huge\textbf{#1}
     \end{minipage}
