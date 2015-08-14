@@ -272,3 +272,12 @@
         {HSRBasswood,fill=HSRBasswood60,mark=none},%
     }}
 }
+
+% % % % % % % % % % % % % %
+% ToDo notes
+\newcommand{\todonotecolor}{red}
+\newcommand{\todo}[1]{%
+    \marginpar{\textcolor{\todonotecolor}{ToDo}}%
+    \colorbox{red}{\parbox{\linewidth}{\textcolor{white}{#1}}}%
+    \PackageWarning{ToDo:}{#1!}%
+}
