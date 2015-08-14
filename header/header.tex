@@ -10,13 +10,9 @@
 % - Hannes Badertscher
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
-% Warnings for obsolete packages
-\RequirePackage[l2tabu, orthodox]{nag}
+% % % % % % % % % % % % % %
+% Basic document setup
 
-% Load extended TeX
-\RequirePackage{etex}
-
-% Document class and language
 \documentclass[
     11pt,               % font size
     final,
@@ -27,175 +23,163 @@
     listof=totoc,       % lof and lot in toc
 ]{scrreprt}             % koma-script report
 
+% Author and title of document
+\author{\Author}
+\title{\Title}
+\date{\today}
+
+% Load Fonts
+\usepackage[T1]{fontenc}                      % Use T1 encoding
+\usepackage[scaled=0.85]{berasans}            % Sans-serif: Bera Sans
+\usepackage[scaled=0.84]{beramono}            % Mono-space: Bera Mono
+\usepackage[sc]{mathpazo}                     % Serif: Palatino
+\usepackage[T1,small,euler-digits]{eulervm}   % Math: EulerVM
+\linespread{1.05}                             % More linespread for Palatino
+
+% Calculate page sizes with 10mm binding offset
+\typearea[10mm]{calc}
+
+% Basic packages
+\usepackage[final]{microtype}    % Enable micro-typography
+\usepackage{scrhack}             % Fixes koma-script incompatibilities
+\usepackage{mparhack}            % Improved marginpar placement
+
+% Load HSR colors
+\usepackage{xcolor}
+\usepackage{header/HSRColors}
+
+% Header and footer
+\usepackage[komastyle,automark]{scrpage2}  % Custom header and footer
+\pagestyle{scrheadings}
+\renewcommand{\headfont}{\normalfont\sffamily}
+\makeatletter
+    \renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~--~#1}{}}
+\makeatother
+\setheadsepline[text]{0.4pt}
+\rohead{\rightmark}
+\lehead{\leftmark}
+
+% Index
+\usepackage{imakeidx}
+\makeindex[intoc,columnseprule]
+\indexsetup{firstpagestyle=plain}    % Show header/footer on index page
 
 % % % % % % % % % % % % % %
-% Packages
+% Language stuff
+\newcommand*{\LangDE}{de}
+\ifx \Lang \LangDE
+    \usepackage[english,ngerman]{babel}  % Main language: German
+\else
+    \usepackage[ngerman,english]{babel}  % Main language: English
+\fi
 
-    % Basic stuff
-    \usepackage[utf8]{inputenc}
-    \usepackage[T1]{fontenc}
-    \usepackage[final]{microtype}
-
-    % Fonts
-    \usepackage[scaled=0.85]{berasans}            % Sans-serif: Bera Sans
-    \usepackage[scaled=0.84]{beramono}            % Mono-space: Bera Mono
-    \usepackage[sc]{mathpazo}                     % Serif: Palatino
-    \usepackage[T1,small,euler-digits]{eulervm}   % Math: EulerVM
-    \linespread{1.05}                             % More linespread for Palatino
-
-    % Some hacks
-    \usepackage{scrhack}    % fix koma-script incompatibilities
-    \usepackage{mparhack}   % needed for nice marginpar placement
-
-    % Choose document language
-    \newcommand*{\LangDE}{de}
-    \ifx \Lang \LangDE
-        \usepackage[english,ngerman]{babel}  % Main language: German
-    \else
-        \usepackage[ngerman,english]{babel}  % Main language: English
-    \fi
-
-    % Document setup
-    \usepackage[komastyle,automark]{scrpage2}  % Custom header and footer
-    \usepackage{multicol}                      % Allow multicolumn document
-    \usepackage{appendix}                      % Create appendix page
-
-    % Date and time format
-    \usepackage{datetime}
-    \newdateformat{titledate}{\THEDAY.~\monthname\space\THEYEAR}
-
-    % Colors
-    \usepackage{xcolor}
-    \usepackage{header/HSRColors}
-
-    % Math
-    \usepackage{amsmath}
-    \usepackage{amssymb}
-
-    % Tables
-    \usepackage{multirow}
-    \usepackage{tabularx}
-    \usepackage{booktabs}
-
-    % Figures
-    \usepackage{caption}[2008/08/24]
-    \usepackage{subcaption}
-    \usepackage{pdfpages}
-    \usepackage{epstopdf}
-
-    % TikZ
-    \usepackage{tikz}
-    \usetikzlibrary{positioning}
-    \usepackage[american currents]{circuitikz}
-    \usepackage{tikz-timing}[2009/12/09]
-    \usepackage{pgfplots}
-
-    % Listings
-    \input{header/listings}
-    \usepackage{matlab-prettifier}
-
-    % SI Units
-    \usepackage{siunitx}
-    \sisetup{detect-all,sticky-per,per-mode=symbol}
-
-    % Glossary
-    \usepackage[toc]{glossaries}
-    \renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
-
-    % Index
-    \usepackage{imakeidx}
-    \makeindex[intoc,columnseprule]
-
-    % Quotation marks
-    \usepackage{csquotes}
-    \setquotestyle[quotes]{german}
+\addto\extrasenglish{% English
+    \renewcommand*{\figureautorefname}{Fig.}             % fig:
+    \renewcommand*{\tableautorefname}{Tab.}              % tab:
+    \renewcommand*{\equationautorefname}{Eq.}            % eq:
+}
+\addto\extrasngerman{% German
+    \renewcommand*{\figureautorefname}{Abb.}             % fig:
+    \renewcommand*{\tableautorefname}{Tab.}              % tab:
+    \renewcommand*{\equationautorefname}{Gl.}            % eq:
+}
 
 % % % % % % % % % % % % % %
-% Document Settings
+% Additional packages
 
-    % Author and title of document
-    \author{\Author}
-    \title{\Title}
-    \date{\today}
+% Date and time format
+\usepackage{datetime}
+\newdateformat{titledate}{\THEDAY.~\monthname\space\THEYEAR}
 
-    % Calculate page sizes with 10mm binding offset
-    \typearea[10mm]{calc}
+% Allow multicolumn document
+\usepackage{multicol}
 
-    % Header and footer
-    \pagestyle{scrheadings}
-    \renewcommand{\headfont}{\normalfont\sffamily}
-    \makeatletter
-        \renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~-~#1}{}}	
-    \makeatother
-    \setheadsepline[text]{0.4pt}
-    \rohead{\rightmark}
-    \lehead{\leftmark}
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
 
-    % Show header/footer on index page
-    \indexsetup{firstpagestyle=plain}
+% Tables
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{booktabs}
 
-    % PDF information
-    \usepackage[
-        pdftitle={\Title},
-        pdfauthor={\Author},
-        pdfsubject={\Subject},
-        pdfkeywords={\Keywords},
-        pdflang={\Lang},
-        pdfpagemode=UseOutlines,  % Show outlines when opening pdf.
-        pdfdisplaydoctitle=true,  % Show document title in pdf viewer.
-        pdfcreator={LaTeX with hyperref and KOMA-Script},
-        colorlinks=true,
-        linkcolor=HSRBlue,
-        citecolor=HSRBlue,
-        filecolor=HSRBlue,
-        urlcolor=HSRBlue,
-        bookmarksnumbered=true
-    ]{hyperref}
-    
-    % If \Print=true, then make all links black for nicer print
-    \providecommand*{\True}{true}
-    \ifx \Print \True
-        \hypersetup{hidelinks}
-    \fi
+% Figures
+\usepackage{pdfpages}
+\usepackage{epstopdf}
 
-    % Setup toc and section numbering depth
-    \setcounter{tocdepth}{2}
-    \setcounter{secnumdepth}{4}
+% Listings
+\input{header/listings}
+\usepackage{matlab-prettifier}
 
-    % Number equations, figures, tables within chapters
-    \numberwithin{equation}{chapter}
-    \numberwithin{figure}{chapter}
-    \numberwithin{table}{chapter}
+% SI Units
+\usepackage{siunitx}
+\sisetup{detect-all,sticky-per,per-mode=symbol}
 
-    % Setup captions
-    \setkomafont{captionlabel}{\scshape\color{HSRBlue}}
-    \captionsetup{labelsep=quad}
+% Glossary
+\usepackage[toc]{glossaries}
+\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
 
-    % Nicer marginpar placement
-    \newcommand*{\oldmarginpar}{}
-    \let\oldmarginpar\marginpar
-    \renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
+% Quotation marks
+\usepackage{csquotes}
+\setquotestyle[quotes]{german}
 
-    % Itemize items
-    \newcommand{\hsrlistitemi}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
-    \newcommand{\hsrlistitemii}{\textcolor{HSRLightGray}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
-    \newcommand{\hsrlistitemiii}{\textcolor{HSRLightGray}{\raisebox{.3ex}{\tiny$\blacktriangleright$}}}
-    
-    \renewcommand{\labelitemi}{\hsrlistitemi}
-    \renewcommand{\labelitemii}{\hsrlistitemii}
-    \renewcommand{\labelitemiii}{\hsrlistitemiii}
-    
-    % Autoref names
-    \addto\extrasenglish{% English
-        \renewcommand*{\figureautorefname}{Fig.}             % fig:
-        \renewcommand*{\tableautorefname}{Tab.}              % tab:
-        \renewcommand*{\equationautorefname}{Eq.}            % eq:
-    }
-    \addto\extrasngerman{% German
-        \renewcommand*{\figureautorefname}{Abb.}             % fig:
-        \renewcommand*{\tableautorefname}{Tab.}              % tab:
-        \renewcommand*{\equationautorefname}{Gl.}            % eq:
-    }
+% % % % % % % % % % % % % %
+% Numbering and captions
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+% Setup captions
+\usepackage{caption}[2008/08/24]
+\usepackage{subcaption}
+\setkomafont{captionlabel}{\scshape\color{HSRBlue}}
+\captionsetup{labelsep=quad}
+
+% Setup toc and section numbering depth
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{4}
+
+% % % % % % % % % % % % % %
+% Hyperref setup
+\usepackage[
+    pdftitle={\Title},
+    pdfauthor={\Author},
+    pdfsubject={\Subject},
+    pdfkeywords={\Keywords},
+    pdflang={\Lang},
+    pdfpagemode=UseOutlines,  % Show outlines when opening pdf.
+    pdfdisplaydoctitle=true,  % Show document title in pdf viewer.
+    pdfcreator={LaTeX with hyperref and KOMA-Script},
+    colorlinks=true,
+    linkcolor=HSRBlue,
+    citecolor=HSRBlue,
+    filecolor=HSRBlue,
+    urlcolor=HSRBlue,
+    bookmarksnumbered=true
+]{hyperref}
+
+% If \Print=true, then make all links black for nicer print
+\providecommand*{\True}{true}
+\ifx \Print \True
+    \hypersetup{hidelinks}
+\fi
+
+
+% % % % % % % % % % % % % %
+% Marginpar setup
+\newcommand*{\oldmarginpar}{}
+\let\oldmarginpar\marginpar
+\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
+
+% % % % % % % % % % % % % %
+% Itemize items
+\newcommand{\hsrlistitemi}{\textcolor{HSRBlue}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
+\newcommand{\hsrlistitemii}{\textcolor{HSRLightGray}{\raisebox{.3ex}{\tiny$\blacksquare$}}}
+\newcommand{\hsrlistitemiii}{\textcolor{HSRLightGray}{\raisebox{.3ex}{\tiny$\blacktriangleright$}}}
+
+\renewcommand{\labelitemi}{\hsrlistitemi}
+\renewcommand{\labelitemii}{\hsrlistitemii}
+\renewcommand{\labelitemiii}{\hsrlistitemiii}
 
 % % % % % % % % % % % % % %
 % Chapter headings
@@ -226,7 +210,9 @@
 \makeatother
 
 % % % % % % % % % % % % % %
-% Change appendix page
+% Appendix page + toc entry
+\usepackage{appendix}
+
 \makeatletter
 \renewcommand{\@chap@pppage}{%
     \clear@ppage
@@ -258,10 +244,15 @@
 \makeatother
 
 % % % % % % % % % % % % % %
-% TikZ and PGF Plots default formats
+% TikZ and PGF Plots
 
-% Use Sans-Serif family in TikZ graphics
-\tikzset{font=\sffamily}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage[american currents]{circuitikz}
+\usepackage{tikz-timing}[2009/12/09]
+\usepackage{pgfplots}
+
+\tikzset{font=\sffamily}  % Use Sans-Serif family in TikZ graphics
 
 % Create cycle list with HSR colors
 \pgfplotscreateplotcyclelist{hsrcolorlist}{%
