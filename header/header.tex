@@ -14,14 +14,14 @@
 % Basic document setup
 
 \documentclass[
-    11pt,               % font size
+    11pt,                  % Font size
     final,
-    parskip=half,       % half a line skipped between paragraphs
-    twoside,            % two-sided document
-    openright,          % chapters start on right pages
-    bibliography=totoc, % bibliography in toc
-    listof=totoc,       % lof and lot in toc
-]{scrreprt}             % koma-script report
+    parskip=half,          % Half a line skipped between paragraphs
+    twoside,               % Two-sided document
+    openright,             % Chapters start on right pages
+    bibliography=totoc,    % Bibliography in ToC
+    listof=totoc,          % LoF and LoT in ToC
+]{scrreprt}[2015/09/15]    % Use current version of KOMA-Script
 
 % Author and title of document
 \author{\Author}
@@ -33,14 +33,14 @@
 \usepackage[scaled=0.85]{berasans}            % Sans-serif: Bera Sans
 \usepackage[scaled=0.84]{beramono}            % Mono-space: Bera Mono
 \usepackage[sc]{mathpazo}                     % Serif: Palatino
-\usepackage[T1,small,euler-digits]{eulervm}   % Math: EulerVM
 \linespread{1.05}                             % More linespread for Palatino
 
-% Calculate page sizes with 10mm binding offset
-\typearea[10mm]{calc}
+% Define text area
+\typearea[10mm]{9}
+\setlength{\marginparwidth}{25mm}
 
 % Basic packages
-\usepackage[final]{microtype}    % Enable micro-typography
+\usepackage[final,activate={true,nocompatibility}]{microtype}    % Enable micro-typography
 \usepackage{scrhack}             % Fixes koma-script incompatibilities
 \usepackage{mparhack}            % Improved marginpar placement
 
@@ -49,24 +49,35 @@
 \usepackage{header/HSRColors}
 
 % Header and footer
-\usepackage[komastyle,automark]{scrpage2}  % Custom header and footer
+\usepackage[automark,headwidth=textwithmarginpar,footwidth=text,headsepline=0.4pt:textwithmarginpar]{scrlayer-scrpage}  % Custom header and footer
 \pagestyle{scrheadings}
 \renewcommand{\headfont}{\normalfont\sffamily}
 \makeatletter
-    \renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~--~#1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\@chapapp~\thechapter~--~#1}{}}
 \makeatother
-\setheadsepline[text]{0.4pt}
 \rohead{\rightmark}
 \lehead{\leftmark}
 
 % Bibliography
 \usepackage[backend=biber,style=ieee]{biblatex}
-\bibliography{frontmatter/bibliograpy.bib}
+\renewbibmacro*{bbx:savehash}{}                       % Don't abbreviate identical authors
+\defbibheading{bibintoc}[\bibname]{%                  % Make bibliography title a chapter*
+    \chapter*{#1}\markboth{#1}{#1}%
+    \addcontentsline{toc}{chapter}{#1}%
+}
+
+% Glossary
+\usepackage[toc]{glossaries}
+\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
 
 % Index
 \usepackage{imakeidx}
 \makeindex[intoc,columnseprule]
 \indexsetup{firstpagestyle=plain}    % Show header/footer on index page
+
+% Aligned footnotes
+\usepackage[hang]{footmisc}
+\setlength{\footnotemargin}{1em}
 
 % % % % % % % % % % % % % %
 % Language stuff
@@ -76,17 +87,6 @@
 \else
     \usepackage[ngerman,english]{babel}  % Main language: English
 \fi
-
-\addto\extrasenglish{% English
-    \renewcommand*{\figureautorefname}{Fig.}             % fig:
-    \renewcommand*{\tableautorefname}{Tab.}              % tab:
-    \renewcommand*{\equationautorefname}{Eq.}            % eq:
-}
-\addto\extrasngerman{% German
-    \renewcommand*{\figureautorefname}{Abb.}             % fig:
-    \renewcommand*{\tableautorefname}{Tab.}              % tab:
-    \renewcommand*{\equationautorefname}{Gl.}            % eq:
-}
 
 % % % % % % % % % % % % % %
 % Additional packages
@@ -101,6 +101,7 @@
 % Math
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{bm}
 
 % Tables
 \usepackage{multirow}
@@ -111,17 +112,14 @@
 \usepackage{pdfpages}
 \usepackage{epstopdf}
 
-% Listings
+% Listings - if you need advanced listings, switch to minted!
 \input{header/listings}
-\usepackage{matlab-prettifier}
+% \usepackage[newfloat, chapter]{minted}
+% \usemintedstyle{friendly}
 
-% SI Units
+% Si Units
 \usepackage{siunitx}
 \sisetup{detect-all,sticky-per,per-mode=symbol}
-
-% Glossary
-\usepackage[toc]{glossaries}
-\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
 
 % Quotation marks
 \usepackage{csquotes}
@@ -148,7 +146,6 @@
 \usepackage[
     pdftitle={\Title},
     pdfauthor={\Author},
-    pdfsubject={\Subject},
     pdfkeywords={\Keywords},
     pdflang={\Lang},
     pdfpagemode=UseOutlines,  % Show outlines when opening pdf.
@@ -168,12 +165,32 @@
     \hypersetup{hidelinks}
 \fi
 
+% Set reference names
+\addto\extrasenglish{% English
+    \renewcommand*{\figureautorefname}{Fig.}             % fig:
+    \renewcommand*{\tableautorefname}{Tab.}              % tab:
+    \renewcommand*{\equationautorefname}{Eq.}            % eq:
+    \renewcommand*{\chapterautorefname}{Chp.}            % chp:
+    \renewcommand*{\sectionautorefname}{Sec.}            % sec:
+    \renewcommand*{\subsectionautorefname}{Sec.}         % subsec:
+    \providecommand*{\listingautorefname}{Listing}
+}
+\addto\extrasngerman{% German
+    \renewcommand*{\figureautorefname}{Abb.}             % fig:
+    \renewcommand*{\tableautorefname}{Tab.}              % tab:
+    \renewcommand*{\equationautorefname}{Gl.}            % eq:
+}
 
 % % % % % % % % % % % % % %
 % Marginpar setup
+\usepackage{ragged2e}
 \newcommand*{\oldmarginpar}{}
 \let\oldmarginpar\marginpar
-\renewcommand*{\marginpar}[1]{\leavevmode\oldmarginpar{{\scshape\normalsize\textcolor{HSRBlue}{#1}}}}
+\renewcommand*{\marginpar}[1]{%
+    \leavevmode\oldmarginpar%
+    [\RaggedLeft\scshape\footnotesize\textcolor{HSRBlue}{\hspace{0pt}#1}]%
+    {\RaggedRight\scshape\footnotesize\textcolor{HSRBlue}{\hspace{0pt}#1}}%
+}
 
 % % % % % % % % % % % % % %
 % Itemize items
@@ -188,28 +205,32 @@
 % % % % % % % % % % % % % %
 % Chapter headings
 \makeatletter
-\renewcommand{\@makechapterhead}[1]{
-    \vspace*{40\p@}
-    \hfill
-    \begin{minipage}[b]{9cm}
-        \raggedleft
-        \sffamily\huge\textbf{#1}
-    \end{minipage}
-    \quad
-    \sffamily\fontsize{60pt}{3em}\textcolor{HSRBlue}{\textbf{\thechapter}}
-    \vskip 20\p@
-    \normalfont\normalsize
+\renewcommand{\@makechapterhead}[1]{%
+    \vspace*{40\p@}%
+    \hfill%
+    \begin{minipage}[b]{9cm}%
+        \raggedleft%
+        \sffamily\huge\textbf{#1}%
+    \end{minipage}%
+    \quad%
+    {\fontsize{60pt}{3em}\selectfont\sffamily\textbf{\textcolor{HSRBlue}{\thechapter}}}%
+    \vskip 5\p@%
+    \noindent\makebox[\textwidth-2em][l]{\textcolor{HSRBlue}{\rule{\paperwidth-\oddsidemargin-\hoffset-1in}{0.7pt}}}%
+    \vskip 25\p@%
+    \normalfont\normalsize%
 }
 
-\renewcommand{\@makeschapterhead}[1]{
-    \vspace*{40\p@}
-    \hfill
-    \begin{minipage}[b]{9cm}
-        \raggedleft
-        \sffamily\huge\textbf{#1}
-    \end{minipage}
-    \vskip 20\p@
-    \normalfont\normalsize
+\renewcommand{\@makeschapterhead}[1]{%
+    \vspace*{40\p@}%
+    \hfill%
+    \begin{minipage}[b]{9cm}%
+        \raggedleft%
+        \sffamily\huge\textbf{#1}%
+    \end{minipage}%
+    \vskip 5\p@%
+    \noindent\makebox[\textwidth-2em][l]{\textcolor{HSRBlue}{\rule{\paperwidth-\oddsidemargin-\hoffset-1in}{0.7pt}}}%
+    \vskip 25\p@%
+    \normalfont\normalsize%
 }
 \makeatother
 
@@ -249,14 +270,19 @@
 
 % % % % % % % % % % % % % %
 % TikZ and PGF Plots
-
 \usepackage{tikz}
-\usetikzlibrary{positioning}
-\usepackage[american currents]{circuitikz}
-\usepackage{tikz-timing}[2009/12/09]
 \usepackage{pgfplots}
 
-\tikzset{font=\sffamily}  % Use Sans-Serif family in TikZ graphics
+% Tikz Libraries
+\usetikzlibrary{positioning}
+
+ % Use Sans-Serif family in TikZ graphics
+\tikzset{font=\sffamily}
+
+% If there are many TikZ images, make them external.
+% Note: you'll have to call pdflatex with the -shell-escape flag!
+%\usetikzlibrary{external}
+%\tikzexternalize[prefix=tikz/]
 
 % Create cycle list with HSR colors
 \pgfplotscreateplotcyclelist{hsrcolorlist}{%
@@ -280,8 +306,24 @@
 % % % % % % % % % % % % % %
 % ToDo notes
 \newcommand{\todonotecolor}{red}
+
+% Small TODO note
+\newcommand{\todonote}[1]{%
+    \marginpar{\textcolor{\todonotecolor}{ToDo}}%
+    \colorbox{red}{\sffamily\textcolor{white}{#1}}%
+    \PackageWarning{ToDo:}{#1!}%
+}
+
+% Large TODO note
 \newcommand{\todo}[1]{%
     \marginpar{\textcolor{\todonotecolor}{ToDo}}%
-    \colorbox{red}{\parbox{\linewidth}{\textcolor{white}{#1}}}%
+    \colorbox{red}{\parbox{\linewidth}{\sffamily\textcolor{white}{#1}}}%
     \PackageWarning{ToDo:}{#1!}%
+}
+
+% Command: Citation needed!
+\newcommand{\citationneeded}{%
+    \marginpar{\textcolor{\todonotecolor}{ToDo}}%
+    \sffamily\textcolor{red}{$^\text{[Citation needed]}$}
+    \PackageWarning{ToDo:}{Citation needed!}%
 }
