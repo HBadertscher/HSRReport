@@ -1,6 +1,6 @@
 before_install:
 - sudo apt-get update
-- sudo apt-get install -y texlive-latex-extra texlive-lang-german texlive-math-extra texlive-fonts-extra
+- sudo apt-get install -y texlive-latex-extra texlive-lang-german texlive-math-extra texlive-fonts-extra texlive-bibtex-extra biber
 script:
 - pdflatex -interaction=nonstopmode doku
 - biber doku
