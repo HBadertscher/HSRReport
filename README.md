@@ -1,6 +1,8 @@
 HSRReport
 =========
 
+[![Build Status](https://travis-ci.org/HBadertscher/HSRReport.svg?branch=master)](https://travis-ci.org/HBadertscher/HSRReport)
+
 A template for reports (e.g. bachelor thesis, ...) using LaTeX. Wherever possible the 
 corporate identity (CI) of HSR University of Applied Sciences of Eastern Switzerland
 in Rapperswil is applied.
